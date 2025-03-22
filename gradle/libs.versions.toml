@@ -14,6 +14,8 @@ spring-kafka = "3.1.4"
 spring-dependency-management = "1.1.4"
 spring-tx = "6.1.2"
 
+mockito-kotlin = "3.2.0"
+
 spring-data-querydsl-r2dbc = "9.0.7"
 spring-data-querydsl-jpa = "5.1.0"
 #spring-data-querydsl-jpa = "5.1.0"
@@ -69,20 +71,37 @@ commons-common = ["spring-boot-starter-web", "spring-security-core", "jackson-da
     "jackson-datatype-jsr310", "jackson-module-kotlin"]
 commons-common-test = []
 
-# :project: car-mgt
-project-car-mgt-adapter-data-jpa = ["spring-boot-starter-data-jpa", "db-mysql-jpa", "jakarta-validation-api",
+# :domains: 공통
+domains-common = [
+    # jpa
+    "spring-boot-starter-data-jpa", "db-mysql-jpa", "jakarta-validation-api",
+    "jackson-datatype-jdk8", "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind",
+    # web
+    "spring-boot-starter-validation",
+    "spring-boot-starter-web",
+]
+domains-common-test = [
+    # jpa-flyway
+    "flyway-core", "flyway-mysql", "mockito-kotlin"
+]
+domains-common-kapt = [
+    # jpa
+    "spring-boot-configuration-processor"
+]
+
+# :project: project-beyond-medicine-backend
+project-beyond-medicine-backend-adapter-data-jpa = ["spring-boot-starter-data-jpa", "db-mysql-jpa", "jakarta-validation-api",
     "jackson-datatype-jdk8", "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind", ]
-project-car-mgt-adapter-data-jpa-kapt = ["spring-boot-configuration-processor"]
-project-car-mgt-adapter-data-jpa-test = ["flyway-core", "flyway-mysql"]
-project-car-mgt-application = ["spring-boot-starter-web"]
-project-car-mgt-application-test = []
-project-car-mgt-bootstrap = ["spring-boot-starter-web"]
-project-car-mgt-connector = ["spring-boot-starter-web", "spring-boot-starter-validation", "jakarta-validation-api",
+project-beyond-medicine-backend-adapter-data-jpa-kapt = ["spring-boot-configuration-processor"]
+project-beyond-medicine-backend-adapter-data-jpa-test = ["flyway-core", "flyway-mysql"]
+project-beyond-medicine-backend-application = ["spring-boot-starter-web"]
+project-beyond-medicine-backend-application-test = []
+project-beyond-medicine-backend-bootstrap = ["spring-boot-starter-web"]
+project-beyond-medicine-backend-connector = ["spring-boot-starter-web", "spring-boot-starter-validation", "jakarta-validation-api",
     "springdoc-openapi-starter-webmvc-ui", "spring-tx", "kotlinx-coroutines-reactor", "jackson-datatype-jdk8",
     "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind", "mapstruct"]
-project-car-mgt-connector-kapt = ["mapstruct-processor"]
-project-car-mgt-connector-test = ["spring-boot-starter-web", "spring-boot-starter-webflux", "mock-server-netty", "mock-server-client-java", "db-mysql-jpa", "spring-boot-starter-data-jpa"]
-project-car-mgt-admin = []
+project-beyond-medicine-backend-connector-kapt = ["mapstruct-processor"]
+project-beyond-medicine-backend-connector-test = ["spring-boot-starter-web", "spring-boot-starter-webflux", "mock-server-netty", "mock-server-client-java", "db-mysql-jpa", "spring-boot-starter-data-jpa"]
 
 [libraries]
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
@@ -112,20 +131,11 @@ kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", versi
 
 spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "spring-boot" }
-spring-boot-starter-security = { module = "org.springframework.boot:spring-boot-starter-security", version.ref = "spring-boot" }
 spring-security-core = { module = "org.springframework.security:spring-security-core", version.ref = "spring-security" }
-spring-security-config = { module = "org.springframework.security:spring-security-config", version.ref = "spring-security" }
-spring-security-web = { module = "org.springframework.security:spring-security-web", version.ref = "spring-security" }
-spring-security-test = { module = "org.springframework.security:spring-security-test", version.ref = "spring-security" }
 spring-boot-starter-aop = { module = "org.springframework.boot:spring-boot-starter-aop", version.ref = "spring-boot" }
-spring-boot-starter-oauth2-client = { module = "org.springframework.boot:spring-boot-starter-oauth2-client", version.ref = "spring-boot" }
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "spring-boot" }
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
-spring-boot-starter-data-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis", version.ref = "spring-boot" }
-spring-boot-starter-data-redis-reactive = { module = "org.springframework.boot:spring-boot-starter-data-redis-reactive", version.ref = "spring-boot" }
-spring-boot-starter-mail = { module = "org.springframework.boot:spring-boot-starter-mail", version.ref = "spring-boot" }
 spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot" }
-spring-boot-starter-data-r2dbc = { module = "org.springframework.boot:spring-boot-starter-data-r2dbc", version.ref = "spring-boot" }
 spring-boot-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation", version.ref = "spring-boot" }
 spring-tx = { module = "org.springframework:spring-tx", version.ref = "spring-tx" }
 spring-boot-testcontainters = { module = "org.springframework.boot:spring-boot-testcontainers", version.ref = "spring-boot" }
@@ -156,6 +166,7 @@ junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = 
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 hamcrest = { module = "org.hamcrest:hamcrest", version.ref = "hamcrest" }
 springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest-runner-junit5" }
 kotest-extensions-spring = { module = "io.kotest.extensions:kotest-extensions-spring", version.ref = "kotest-extensions-spring" }
 kotest-extensions-testcontainers = { module = "io.kotest.extensions:kotest-extensions-testcontainers", version.ref = "kotest-extensions-testcontainers" }

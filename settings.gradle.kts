@@ -4,6 +4,22 @@ plugins {
 
 rootProject.name = "backend"
 
+// commons
 include(
     ":commons:core",
+)
+
+// domains
+include(
+    ":domains:domain-user",
+    ":domains:domain-user-client",
+    ":domains:domain-prescription",
+    ":domains:domain-prescription-client",
+)
+// project
+include(
+    ":project-beyond-medicine-backend-api:adapter-data-jpa",
+    ":project-beyond-medicine-backend-api:application",
+    ":project-beyond-medicine-backend-api:bootstrap",
+    ":project-beyond-medicine-backend-api:connector"
 )
