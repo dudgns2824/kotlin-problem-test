@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+# swagger
+springdoc:
+  api-docs:
+    enabled: true
+
+# - logging
+logging:
+  level:
+    root: info
+    com.querydsl.sql: trace
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace
+    org.springframework.security: debug
+    org.springframework.transaction: trace
+debug: true
