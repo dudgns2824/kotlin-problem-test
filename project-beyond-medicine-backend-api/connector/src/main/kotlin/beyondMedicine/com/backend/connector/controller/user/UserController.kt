@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@Tag(description = "유저 조회 관련 API 입니다.", name = "유저 조회 관련 API")
+@Tag(description = "유저 관련 API 입니다.", name = "유저 관련 API")
 @RequestMapping("/api/beyondMedicine/user")
 class UserController {
+    // 사용자 검증 API
     @GetUserVerifyApiDocs
     @GetMapping("/verify")
     fun verify(

@@ -72,10 +72,11 @@ commons-common = ["spring-boot-starter-web", "spring-security-core", "jackson-da
 commons-common-test = []
 
 # :domains: 공통
+
 domains-common = [
     # jpa
     "spring-boot-starter-data-jpa", "db-mysql-jpa", "jakarta-validation-api",
-    "jackson-datatype-jdk8", "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind",
+    "jackson-datatype-jdk8", "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind", "spring-tx",
     # web
     "spring-boot-starter-validation",
     "spring-boot-starter-web",

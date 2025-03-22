@@ -4,8 +4,6 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":project-beyond-medicine-backend-api:application"))
-
     implementation(project(":commons:core"))
 
     implementation(project(":domains:domain-user"))

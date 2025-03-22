@@ -16,6 +16,9 @@ dependencies {
         }
     }
 
+    implementation(project(":domains:domain-prescription-client"))
+    implementation(project(":domains:domain-user-client"))
+
     kapt(libs.bundles.project.beyond.medicine.backend.adapter.data.jpa.kapt)
     kapt(libs.spring.data.querydsl.apt) {
         artifact {

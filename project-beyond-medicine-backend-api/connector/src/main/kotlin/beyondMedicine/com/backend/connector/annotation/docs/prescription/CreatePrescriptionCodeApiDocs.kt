@@ -1,4 +1,4 @@
-package beyondMedicine.com.backend.connector.annotation.docs.user
+package beyondMedicine.com.backend.connector.annotation.docs.prescription
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.Parameter
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
 @Operation(
-    summary = "사용자 - 사용자 검증 API",
+    summary = "처방 - 처방 코드 생성 api",
     description =
     """
        요청 파라미터 존재
@@ -63,4 +63,4 @@ import io.swagger.v3.oas.annotations.Parameter
         )
     ],
 )
-annotation class GetUserVerifyApiDocs
+annotation class CreatePrescriptionCodeApiDocs()
