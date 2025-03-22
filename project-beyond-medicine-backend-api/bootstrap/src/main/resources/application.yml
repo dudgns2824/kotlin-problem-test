@@ -1,0 +1,10 @@
+service:
+  serviceName: beyondMedicine-backend
+
+spring:
+  profiles:
+    active: local
+    group:
+      local:
+        - adapter-data-jpa-env
+        - adapter-data-jpa-local
