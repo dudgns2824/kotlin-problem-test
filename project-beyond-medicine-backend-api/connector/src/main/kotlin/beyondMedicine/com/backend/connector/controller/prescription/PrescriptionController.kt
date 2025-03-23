@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import beyondMedicine.com.backend.serviceBus.prescription.command.IBackendPrescriptionCommandServiceBus
+import org.springframework.web.bind.annotation.RequestParam
 
 @RequestMapping("/api/beyondMedicine/prescription")
 @RestController
@@ -14,8 +15,10 @@ import beyondMedicine.com.backend.serviceBus.prescription.command.IBackendPrescr
 class PrescriptionController(
     private val backendPrescriptionCommandServiceBus: IBackendPrescriptionCommandServiceBus
 ) {
+    // 처방 코드 생성 API
     @CreatePrescriptionCodeApiDocs
     @PostMapping("/code")
     fun createPrescriptionCode(
-    ) = ApiResponse.ok(backendPrescriptionCommandServiceBus.createPrescriptionCode(""))
+        @RequestParam(value = "hospitalId") hospitalId: String
+    ) = ApiResponse.ok(backendPrescriptionCommandServiceBus.createPrescriptionCode(hospitalId))
 }
