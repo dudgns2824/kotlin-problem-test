@@ -52,4 +52,6 @@ class UserDomainQueryService(
         return resStr
 
     }
+
+    override fun isUserIdExist(userId: String) = userDomainQueryRepositoryBus.isUserExist(userId)
 }

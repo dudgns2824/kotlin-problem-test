@@ -4,4 +4,6 @@ import beyondMedicine.com.backend.domains.user.dto.user.response.UserDetailRespo
 
 interface IUserDomainQueryRepositoryBus {
     fun getUserDetail(id: String): UserDetailResponseDto?
+
+    fun isUserExist(userId: String): Boolean
 }

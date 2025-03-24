@@ -67,7 +67,7 @@ test-junit = ["mockk", "springmockk", "kotlin-test", "kotlin-test-junit5", "juni
 
 # :commons: 공통
 commons-base = ["kotlin-logging", "kotlin-reflect", "jackson-module-kotlin", "kotlinx-uuid"]
-commons-common = ["spring-boot-starter-web", "spring-security-core", "jackson-datatype-jdk8",
+commons-common = ["spring-boot-starter-web", "spring-boot-starter-validation", "jackson-datatype-jdk8",
     "jackson-datatype-jsr310", "jackson-module-kotlin"]
 commons-common-test = []
 

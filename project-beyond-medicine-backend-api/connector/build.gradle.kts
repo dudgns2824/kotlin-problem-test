@@ -8,6 +8,8 @@ dependencies {
 
     implementation(project(":commons:core"))
 
+    implementation(project(":domains:domain-user"))
+
     implementation(libs.bundles.project.beyond.medicine.backend.connector)
     kapt(libs.bundles.project.beyond.medicine.backend.connector.kapt)
 }

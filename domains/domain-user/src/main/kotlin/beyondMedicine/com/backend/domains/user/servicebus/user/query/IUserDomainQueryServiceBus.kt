@@ -7,4 +7,6 @@ interface IUserDomainQueryServiceBus {
     fun getUserDetail(id: String): UserDetailResponseDto
 
     fun verifyUser(req: UserVerifyRequestDto): String
+
+    fun isUserIdExist(userId: String): Boolean
 }
