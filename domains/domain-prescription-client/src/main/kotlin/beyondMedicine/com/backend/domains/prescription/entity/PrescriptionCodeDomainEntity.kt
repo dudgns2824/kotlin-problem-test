@@ -1,10 +1,14 @@
 package beyondMedicine.com.backend.domains.prescription.entity
 
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import jakarta.persistence.Table
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
+@Suppress("ktlint:standard:no-consecutive-comments")
 // 처방 코드 테이블
 @Entity
 @Table(name = "prescription_code")
@@ -16,14 +20,12 @@ class PrescriptionCodeDomainEntity {
     @Column(name = "id")
     var id: String? = null
 
-//
-/**
+    /**
      * 처방한 병원
      */
-/*
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hospital_id", nullable = false)
-    var hospital: HospitalDomainEntity? = null*/
+    /*@ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "hospital_id", nullable = false)
+        var hospital: HospitalDomainEntity? = null*/
 
     /**
      * 처방한 병원 id
