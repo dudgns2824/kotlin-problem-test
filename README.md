@@ -35,3 +35,14 @@ http://localhost:8081/swagger-ui/index.html
 ```
 제가 운영하고 있는 서버 db에 올려서 민감한 정보라 db접근 값들을 따로 env파일로 뻈습니다.
 ```
+
+## exception Handler를 이용한 도메인 별 exception 처리
+
+### USER 도메인 EXCEPTION ENUM
+```
+
+```
+
+### PRESCRIPTION 도메인 EXCEPTION ENUM
+```
+```
