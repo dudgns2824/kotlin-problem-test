@@ -1,9 +1,6 @@
 package beyondMedicine.com.backend.domains.user.entity
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
@@ -19,6 +16,14 @@ class UserEntity {
     @Id
     @Column(name = "user_id")
     var userId: String? = null
+
+    /**
+     * 처방 코드
+     * OneToOne 연관관계 매핑을 고려 해 볼 수 있으나, 그렇게 하면 도메인 주도 개발의 의미가 퇴색 된다고 생각함.
+     * 차라리 도메인 주도 개발에선 prescriptionQueryServiceBus에 id기준으로 처방 코드 dto를 가져오는것이 맞다고 생각합니다.
+     */
+    @Column(name = "prescription_code")
+    var prescriptionCode: String? = null
 
     /**
      * 생성 일시

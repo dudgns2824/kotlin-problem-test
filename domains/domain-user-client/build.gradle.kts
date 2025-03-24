@@ -10,6 +10,7 @@ dependencies {
     api(project(":domains:domain-user"))
 
     implementation(project(":commons:core"))
+    implementation(project(":domains:domain-prescription-client"))
 
     implementation(libs.spring.data.querydsl.jpa) {
         artifact {
