@@ -35,7 +35,7 @@
 │├── build.gradle            # Gradle 설정      
 ```
 
-## 엑셀 산출물이 따로 존재하나 서버 실행 후 swagger를 통해 request parameter, response 결과 값을 쉽게 볼 수 있음
+## 서버 실행 후 swagger를 통해 request parameter, response 결과 값을 쉽게 볼 수 있음
 ```
 http://localhost:8081/swagger-ui/index.html
 ```
