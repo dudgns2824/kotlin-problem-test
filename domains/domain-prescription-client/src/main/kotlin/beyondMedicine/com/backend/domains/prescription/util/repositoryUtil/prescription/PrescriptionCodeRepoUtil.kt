@@ -13,6 +13,7 @@ object PrescriptionCodeRepoUtil {
             prescriptionCodeDomainEntity.hospitalId,
             prescriptionCodeDomainEntity.isActivate,
             prescriptionCodeDomainEntity.createdAt,
+            prescriptionCodeDomainEntity.expiredAt,
             prescriptionCodeDomainEntity.updatedAt,
             prescriptionCodeDomainEntity.deletedAt,
         )

@@ -8,6 +8,7 @@ plugins {
 
 dependencies {
     api(project(":domains:domain-prescription"))
+    api(project(":domains:domain-user"))
     implementation(project(":commons:core"))
 
     implementation(libs.spring.data.querydsl.jpa) {

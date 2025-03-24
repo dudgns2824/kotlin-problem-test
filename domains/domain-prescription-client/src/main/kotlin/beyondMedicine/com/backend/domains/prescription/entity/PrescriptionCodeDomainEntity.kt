@@ -47,6 +47,13 @@ class PrescriptionCodeDomainEntity {
     var createdAt: LocalDateTime? = null
 
     /**
+     * 만료 일시
+     */
+    @CreationTimestamp
+    @Column(name = "expired_at")
+    var expiredAt: LocalDateTime? = null
+
+    /**
      * 수정 일시
      */
     @UpdateTimestamp

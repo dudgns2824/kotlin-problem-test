@@ -8,6 +8,7 @@ data class PrescriptionCodeDetailResponseDto(
     val hospitalId: String, // 병원 id
     val isActivate: Boolean, // 활성화 여부
     val createdAt: LocalDateTime, // 생성 일시
-    val updatedAt: LocalDateTime, // 수정 일시
-    val deletedAt: LocalDateTime, // 삭제 일시
+    val expiredAt: LocalDateTime?, // 만료 일시
+    val updatedAt: LocalDateTime?, // 수정 일시
+    val deletedAt: LocalDateTime?, // 삭제 일시
 )
