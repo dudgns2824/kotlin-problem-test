@@ -25,4 +25,7 @@ dependencies {
     implementation(libs.bundles.domains.common)
 
     testImplementation(libs.bundles.domains.common.test)
+
+    testImplementation(testFixtures(project(":modules:adapter-testfixture-db")))
+    testImplementation(project(":domains:domain-user-client"))
 }

@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include:
+      - adapter-data-jpa-env
+      - adapter-data-jpa-local

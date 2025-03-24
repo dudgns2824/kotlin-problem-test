@@ -23,3 +23,8 @@ include(
     ":project-beyond-medicine-backend-api:bootstrap",
     ":project-beyond-medicine-backend-api:connector",
 )
+
+// modules
+include(
+    ":modules:adapter-testfixture-db",
+)

@@ -36,17 +36,26 @@ http://localhost:8081/swagger-ui/index.html
 제가 운영하고 있는 서버 db에 올려서 민감한 정보라 db접근 값들을 따로 env파일로 뻈습니다.
 ```
 
+```
+## moddules의 adapter-testfixture-db src/testFixtures/resources에 동봉된 -env.yml 파일 넣어야함.
+제가 운영하고 있는 서버 db에 올려서 민감한 정보라 db접근 값들을 따로 env파일로 뻈습니다.
+```
+
 ## exception Handler를 이용한 도메인 별 exception 처리
 
 ### USER 도메인 EXCEPTION ENUM
 ```
     USER_NOT_EXIST(8001, "해당 유저가 존재하지 않습니다.", 404),
+    HASH_NOT_VALID(8002, "유효한 해시가 아닙니다."),
+    PRESCRIPTION_CODE_NOT_REGIST(8003, "해당 유저의 처방코드가 등록 되지 않았습니다."),
+    VERSION_NOT_VALID(8004, "유효한 버전이 아닙니다."),
+    USER_ID_NOT_EXIST(8005, "해당 유저 ID가 존재하지 않습니다.", 404),
 ```
 
 ### PRESCRIPTION 도메인 EXCEPTION ENUM
 ```
     PRESCRIPTION_NOT_EXIST(9001, "해당 처방 코드가 존재하지 않습니다.", 404),
     ACTIVATE_CONDITION_NOT_SATISFIED(9002, "사용자의 기존 만료 되지 않은 처방코드가 이미 등록 되어 있습니다."),
-    PRESCRIPTION_CODE_NOT_EXPIRED(9003, "해당 처방 코드가 만료되지 않았습니다."),
-    PRESCRIPTION_ALREADY_ACTIVATE(9004, "처방코드가 이미 활성화 되었습니다."),
+    PRESCRIPTION_CODE_EXPIRED(9003, "해당 처방 코드가 만료 되었습니다."),
+    PRESCRIPTION_CODE_NOT_REGISTER(9004, "해당 코드가 등록되지 않았습니다"),
 ```

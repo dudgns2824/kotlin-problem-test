@@ -33,8 +33,6 @@ kotest-extensions-spring = "1.1.3"
 kotest-extensions-mock-server = "1.3.0"
 kotest-extensions-testcontainers = "2.0.2"
 
-flyway = "10.12.0"
-
 testcontainers = "1.19.8"
 
 junit = "5.10.2"
@@ -70,6 +68,14 @@ commons-base = ["kotlin-logging", "kotlin-reflect", "jackson-module-kotlin", "ko
 commons-common = ["spring-boot-starter-web", "spring-boot-starter-validation", "jackson-datatype-jdk8",
     "jackson-datatype-jsr310", "jackson-module-kotlin"]
 commons-common-test = []
+commons-base-kotest = [
+    #    commons-test
+    "mockk", "springmockk", "kotlin-test", "kotlin-test-junit5", "junit", "junit-jupiter", "hamcrest", "spring-boot-starter-test",
+    #    kotest
+    "kotest-runner-junit5", "kotest-extensions-spring", "kotest-extensions-testcontainers", "kotest-extensions-mock-server",
+    # testcontainer
+    "spring-boot-testcontainers", "testcontainers-mysql", "testcontainers-junit-jupiter"
+]
 
 # :domains: 공통
 
@@ -82,8 +88,7 @@ domains-common = [
     "spring-boot-starter-web",
 ]
 domains-common-test = [
-    # jpa-flyway
-    "flyway-core", "flyway-mysql", "mockito-kotlin"
+    "mockito-kotlin"
 ]
 domains-common-kapt = [
     # jpa
@@ -94,7 +99,7 @@ domains-common-kapt = [
 project-beyond-medicine-backend-adapter-data-jpa = ["spring-boot-starter-data-jpa", "db-mysql-jpa", "jakarta-validation-api",
     "jackson-datatype-jdk8", "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind", ]
 project-beyond-medicine-backend-adapter-data-jpa-kapt = ["spring-boot-configuration-processor"]
-project-beyond-medicine-backend-adapter-data-jpa-test = ["flyway-core", "flyway-mysql"]
+project-beyond-medicine-backend-adapter-data-jpa-test = []
 project-beyond-medicine-backend-application = ["spring-boot-starter-web", "spring-boot-starter-validation", "jakarta-validation-api",
     "springdoc-openapi-starter-webmvc-ui", "spring-tx", "kotlinx-coroutines-reactor", "jackson-datatype-jdk8",
     "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind", "mapstruct"]
@@ -105,6 +110,10 @@ project-beyond-medicine-backend-connector = ["spring-boot-starter-web", "spring-
     "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind", "mapstruct"]
 project-beyond-medicine-backend-connector-kapt = ["mapstruct-processor"]
 project-beyond-medicine-backend-connector-test = ["spring-boot-starter-web", "spring-boot-starter-webflux", "mock-server-netty", "mock-server-client-java", "db-mysql-jpa", "spring-boot-starter-data-jpa"]
+
+# :module
+modules-test-db = ["spring-boot-starter-data-jpa", "spring-boot-starter-test", "db-mysql-jpa"]
+
 
 [libraries]
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
@@ -141,7 +150,7 @@ spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-start
 spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot" }
 spring-boot-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation", version.ref = "spring-boot" }
 spring-tx = { module = "org.springframework:spring-tx", version.ref = "spring-tx" }
-spring-boot-testcontainters = { module = "org.springframework.boot:spring-boot-testcontainers", version.ref = "spring-boot" }
+spring-boot-testcontainers = { module = "org.springframework.boot:spring-boot-testcontainers", version.ref = "spring-boot" }
 
 spring-cloud-starter-aws = { module = "org.springframework.cloud:spring-cloud-starter-aws", version.ref = "spring-aws" }
 
@@ -198,13 +207,13 @@ mock-server-netty = { module = "org.mock-server:mockserver-netty", version.ref =
 mock-server-client-java = { module = "org.mock-server:mockserver-client-java", version.ref = "mock-server" }
 kotest-extensions-mock-server = { module = "io.kotest.extensions:kotest-extensions-mockserver", version.ref = "kotest-extensions-mock-server" }
 
-flyway-core = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
-flyway-mysql = { module = "org.flywaydb:flyway-mysql", version.ref = "flyway" }
 
 testcontainers-junit-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
 testcontainers-mysql = { module = "org.testcontainers:mysql", version.ref = "testcontainers" }
 testcontainers-r2dbc = { module = "org.testcontainers:r2dbc", version.ref = "testcontainers" }
 testcontainers-mockserver = { module = "org.testcontainers:mockserver", version.ref = "testcontainers" }
+testcontainers-jdbc = { module = "org.testcontainers:jdbc", version.ref = "testcontainers" }
+testcontainers = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers" }
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }

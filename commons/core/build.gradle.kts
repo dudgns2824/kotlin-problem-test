@@ -4,7 +4,11 @@ plugins {
 
 dependencies {
     implementation(libs.bundles.commons.common)
-    implementation(libs.bundles.test.junit)
+    testImplementation(libs.bundles.test.junit)
 
     testImplementation(libs.bundles.test.kotest)
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }

@@ -4,7 +4,11 @@ plugins {
     kotlin("jvm")
 }
 
+val libs: VersionCatalog = versionCatalogs.named("libs")
 dependencies {
+    implementation(libs.findBundle("commons-base").get())
+    testImplementation(libs.findBundle("commons-base-kotest").get())
+    implementation(libs.findLibrary("jackson-module-kotlin").get())
 }
 
 
