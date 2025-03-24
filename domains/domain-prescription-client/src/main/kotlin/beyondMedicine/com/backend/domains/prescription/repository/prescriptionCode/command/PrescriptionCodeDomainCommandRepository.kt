@@ -5,6 +5,7 @@ import beyondMedicine.com.backend.domains.prescription.repositorybus.prescriptio
 import beyondMedicine.com.backend.domains.prescription.util.BaseRepository
 import beyondMedicine.com.backend.domains.prescription.util.PrescriptionCodeUtil
 import org.springframework.stereotype.Repository
+import java.time.LocalDate
 
 @Repository
 class PrescriptionCodeDomainCommandRepository :
@@ -43,7 +44,11 @@ class PrescriptionCodeDomainCommandRepository :
     override fun activatePrescriptionCode(
         userId: String,
         prescriptionCode: String,
-    ): Boolean {
-        TODO("Not yet implemented")
-    }
+    ): Boolean =
+        queryFactory
+            .update(prescriptionCodeDomainEntity)
+            .set(prescriptionCodeDomainEntity.isActivate, true)
+            .set(prescriptionCodeDomainEntity.expiredAt, LocalDate.now().plusWeeks(6).atStartOfDay())
+            .where()
+            .execute() > 0
 }
