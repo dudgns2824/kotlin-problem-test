@@ -7,10 +7,15 @@ import java.io.Serializable
 
 @Embeddable
 class VersionEntityId : Serializable {
-    // 버전 정보
+    // 최신 버전 정보
     @NotNull
-    @Column(name = "version", nullable = false)
-    var version: String? = null
+    @Column(name = "recent_version", nullable = false)
+    var recentVersion: String? = null
+
+    // 최신 버전 정보
+    @NotNull
+    @Column(name = "min_version", nullable = false)
+    var minVersion: String? = null
 
     // os 정보
     @NotNull

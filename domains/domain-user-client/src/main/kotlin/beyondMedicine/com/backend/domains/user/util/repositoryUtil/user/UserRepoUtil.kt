@@ -1,4 +1,4 @@
-package beyondMedicine.com.backend.domains.user.util.repositoryUtil
+package beyondMedicine.com.backend.domains.user.util.repositoryUtil.user
 
 import beyondMedicine.com.backend.domains.user.dto.user.response.UserDetailResponseDto
 import beyondMedicine.com.backend.domains.user.entity.QUserEntity.userEntity

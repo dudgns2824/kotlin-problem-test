@@ -1,5 +1,8 @@
 package beyondMedicine.com.backend.domains.user.util
 
+import beyondMedicine.com.backend.commons.core.exception.byndMdcnException
+import beyondMedicine.com.backend.domains.user.exception.DomainUserErrCode
+
 object VersionVerifyUtil {
     @Suppress("ktlint:standard:property-naming")
     private val regex = """(\d+)\.(\d+)\.(\d+)(?:-(alpha|beta)\.(\d+))?""".toRegex()
@@ -11,19 +14,19 @@ object VersionVerifyUtil {
         val reqVersionList = parseVersion(reqVersion)
         val standardVersionList = parseVersion(standardVersion)
 
-        for (i in 1..reqVersionList.size) {
+        for (i in 0..4) {
             if (standardVersionList[i] > reqVersionList[i]) {
-                return true
+                return false
             }
         }
 
-        return false
+        return true
     }
 
     private fun parseVersion(version: String): List<Int> {
         val (major, minor, patch, label, labelVersion) =
             regex.matchEntire(version)?.destructured
-                ?: throw IllegalArgumentException("Invalid version format: $version")
+                ?: throw byndMdcnException(DomainUserErrCode.VERSION_NOT_VALID)
 
         return listOf(
             major.toInt(),
