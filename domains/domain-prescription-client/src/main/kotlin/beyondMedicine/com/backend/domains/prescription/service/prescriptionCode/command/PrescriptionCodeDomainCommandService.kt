@@ -25,15 +25,14 @@ class PrescriptionCodeDomainCommandService(
     ): Boolean {
         val userDto = userDomainQueryServiceBus.getUserDetail(userId)
 
-        val prescriptionCodeDto = prescriptionCodeDomainQueryRepositoryBus.getDetailPrescriptionCode(userId)
+        val prescriptionCodeDto =
+            prescriptionCodeDomainQueryRepositoryBus.getDetailPrescriptionCode(userDto.prescriptionCode)
 
-        if (prescriptionCodeDto.isActivate) {
-            throw byndMdcnException(DomainPrescriptionErrCode.PRESCRIPTION_ALREADY_ACTIVATE)
-        }
-
+        // 기존 처방코드가 만료되었을 때만 활성화할 수 있어요
         if (prescriptionCodeDto.expiredAt != null &&
             prescriptionCodeDto.expiredAt!!.isAfter(LocalDateTime.now())
         ) {
+            // 사용자의 만료되지 않은 처방코드가 이미 등록되어 있음
             if (userDto.prescriptionCode != null) {
                 throw byndMdcnException(DomainPrescriptionErrCode.ACTIVATE_CONDITION_NOT_SATISFIED)
             } else {

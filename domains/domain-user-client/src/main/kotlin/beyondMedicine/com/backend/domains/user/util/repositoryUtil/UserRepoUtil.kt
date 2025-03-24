@@ -10,7 +10,6 @@ object UserRepoUtil {
         Projections.constructor(
             UserDetailResponseDto::class.java,
             userEntity.userId,
-            userEntity.prescriptionCode,
             userEntity.createdAt,
             userEntity.updatedAt,
             userEntity.deletedAt,

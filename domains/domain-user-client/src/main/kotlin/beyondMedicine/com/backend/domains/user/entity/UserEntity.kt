@@ -5,7 +5,6 @@ import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
-@Suppress("ktlint:standard:no-consecutive-comments")
 // 유저 테이블
 @Entity
 @Table(name = "beyond_medicine_user") // user로 하려 했는데 제 디비에 이미 쓰고 있어서 ㅎㅎ..
@@ -23,9 +22,8 @@ class UserEntity {
      * OneToOne 연관관계 매핑을 고려 해 볼 수 있으나, 그렇게 하면 도메인 주도 개발의 의미가 퇴색 된다고 생각함.
      * 차라리 도메인 주도 개발에선 prescriptionQueryServiceBus에 id기준으로 처방 코드 dto를 가져오는것이 맞다고 생각합니다.
      */
-    /*    @Column(name = "prescription_code")
-        var prescriptionCode: String? = null*/
-    // 처방 코드 여러개 사용? 인것 같아서 조인도 뺐습니다
+    @Column(name = "prescription_code")
+    var prescriptionCode: String? = null
 
     /**
      * 생성 일시
