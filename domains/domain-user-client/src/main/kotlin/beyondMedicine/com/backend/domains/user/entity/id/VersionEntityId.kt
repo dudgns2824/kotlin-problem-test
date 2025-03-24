@@ -12,7 +12,7 @@ class VersionEntityId : Serializable {
     @Column(name = "recent_version", nullable = false)
     var recentVersion: String? = null
 
-    // 최신 버전 정보
+    // 최소 버전 정보
     @NotNull
     @Column(name = "min_version", nullable = false)
     var minVersion: String? = null

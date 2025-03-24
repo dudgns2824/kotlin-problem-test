@@ -1,6 +1,7 @@
 package beyondMedicine.com.backend.domains.user.util
 
 import beyondMedicine.com.backend.commons.core.exception.byndMdcnException
+import beyondMedicine.com.backend.domains.user.enumeration.user.VerifyVersionType
 import beyondMedicine.com.backend.domains.user.exception.DomainUserErrCode
 
 object VersionVerifyUtil {
@@ -10,13 +11,31 @@ object VersionVerifyUtil {
     fun verifyVersion(
         reqVersion: String,
         standardVersion: String,
+        verifyVersionType: VerifyVersionType
     ): Boolean {
         val reqVersionList = parseVersion(reqVersion)
         val standardVersionList = parseVersion(standardVersion)
 
-        for (i in 0..4) {
-            if (standardVersionList[i] > reqVersionList[i]) {
-                return false
+        // 최근 버전 비교일경우
+        if (verifyVersionType == VerifyVersionType.RECENT) {
+            for (i in 0..4) {
+                if (standardVersionList[i] > reqVersionList[i]) {
+                    return false
+                }
+                if (reqVersionList[i] > standardVersionList[i]) {
+                    throw byndMdcnException(DomainUserErrCode.VERSION_NOT_VALID)
+                }
+            }
+        } else if (verifyVersionType == VerifyVersionType.MINIMUM) { //최소 버전 비교 일 경우
+            var biggerThenComparison = false
+
+            for (i in 0..4) {
+                if (reqVersionList[i] > standardVersionList[i]) {
+                    biggerThenComparison = true
+                }
+                if (!biggerThenComparison && standardVersionList[i] > reqVersionList[i]) {
+                    return false
+                }
             }
         }
 

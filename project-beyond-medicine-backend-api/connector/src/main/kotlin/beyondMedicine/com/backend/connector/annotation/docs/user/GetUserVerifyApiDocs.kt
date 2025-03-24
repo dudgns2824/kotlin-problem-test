@@ -36,12 +36,12 @@ import io.swagger.v3.oas.annotations.Parameter
        5. 어떤 사용자가 어떤 version, os, mode, hash로 언제 요청했는지 테이블로 이력을 남겨야 해요.
     """,
     parameters = [
-        Parameter(name = "userId", description = "사용자 ID UUID", required = true),
+        Parameter(name = "userId", description = "사용자 ID UUID", required = true, example = "e4e3ecbd-2208-4905-8120-426473d0eae9"),
         Parameter(
             name = "version",
             description = "버전 정보",
             required = true,
-            example = "0.1.2-alpha.1",
+            example = "0.1.1-alpha.1",
         ),
         Parameter(
             name = "os",

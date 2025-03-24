@@ -1,4 +1,4 @@
-package beyondMedicine.com.backend.domains.user.service.version
+package beyondMedicine.com.backend.domains.user.service.version.query
 
 import beyondMedicine.com.backend.domains.user.repositorybus.version.query.IVersionDomainQueryRepositoryBus
 import beyondMedicine.com.backend.domains.user.servicebus.version.query.IVersionDomainQueryServiceBus
