@@ -18,11 +18,14 @@ class ApiResponse {
 
         fun error(
             code: Int = HttpStatus.INTERNAL_SERVER_ERROR.value(),
+            byndMdcnErrorCode: Int,
+            errModuleName: String,
             message: Any? = null,
             path: String? = null,
             method: String? = null,
         ): Map<String, Any?> {
             var res = mutableMapOf<String, Any?>()
+            res.put("byndMdcnErrorCode", "$errModuleName-$byndMdcnErrorCode")
             res.put("code", code)
             res.put("message", message)
             res.put("timestamp", LocalDateTime.now().toString())

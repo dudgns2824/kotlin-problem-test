@@ -36,7 +36,7 @@ class PrescriptionCodeDomainCommandService(
             if (prescriptionCodeDto.expiredAt != null &&
                 prescriptionCodeDto.expiredAt!!.isAfter(LocalDateTime.now())
             ) {
-                // 사용자의 만료되지 않은 처방코드가 이미 등록되어 있음
+                // 사용자의 만료되지 않은 처방코드가 이미 등록되어 있음 exception 출력
                 throw byndMdcnException(DomainPrescriptionErrCode.ACTIVATE_CONDITION_NOT_SATISFIED)
             }
         }
