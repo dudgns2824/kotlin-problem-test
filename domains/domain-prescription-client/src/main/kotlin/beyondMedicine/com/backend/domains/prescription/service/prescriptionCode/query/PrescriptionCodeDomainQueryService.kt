@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class PrescriptionCodeDomainQueryService(
-    private val prescriptionCodeDomainQueryRepositoryBus: IPrescriptionCodeDomainQueryRepositoryBus
+    private val prescriptionCodeDomainQueryRepositoryBus: IPrescriptionCodeDomainQueryRepositoryBus,
 ) : IPrescriptionCodeDomainQueryServiceBus {
     override fun prescriptionCodeIsActivate(prescriptionCode: String) =
         prescriptionCodeDomainQueryRepositoryBus.prescriptionCodeIsActivate(prescriptionCode)
+
+    override fun getPrescriptionCodeDetail(id: String) = prescriptionCodeDomainQueryRepositoryBus.getDetailPrescriptionCode(id)
 }
