@@ -26,7 +26,12 @@
 │├── build.gradle            # Gradle 설정      
 ```
 
-## 산출물이 따로 존재하나 서버 실행 후 swagger를 통해 request parameter, response 결과 값을 쉽게 볼 수 있음
+## 엑셀 산출물이 따로 존재하나 서버 실행 후 swagger를 통해 request parameter, response 결과 값을 쉽게 볼 수 있음
 ```
 http://localhost:8081/swagger-ui/index.html
+```
+
+## project-beyond-medicine-backend-api의 adapter-data-jpa의 resources에 동봉된 -env.yml 파일 넣어야함.
+```
+제가 운영하고 있는 서버 db에 올려서 민감한 정보라 db접근 값들을 따로 env파일로 뻈습니다.
 ```
