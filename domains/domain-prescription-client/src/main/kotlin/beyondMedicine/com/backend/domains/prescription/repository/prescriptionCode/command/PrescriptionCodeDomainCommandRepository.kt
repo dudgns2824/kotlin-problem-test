@@ -7,7 +7,9 @@ import beyondMedicine.com.backend.domains.prescription.util.PrescriptionCodeUtil
 import org.springframework.stereotype.Repository
 
 @Repository
-class PrescriptionCodeDomainCommandRepository : BaseRepository(), IPrescriptionCodeDomainCommandRepositoryBus {
+class PrescriptionCodeDomainCommandRepository :
+    BaseRepository(),
+    IPrescriptionCodeDomainCommandRepositoryBus {
     override fun createPrescriptionCode(hospitalId: String): String {
         lateinit var prescriptionCode: String
 
@@ -28,19 +30,20 @@ class PrescriptionCodeDomainCommandRepository : BaseRepository(), IPrescriptionC
             .columns(
                 prescriptionCodeDomainEntity.id,
                 prescriptionCodeDomainEntity.hospitalId,
-                prescriptionCodeDomainEntity.isActivate
-            )
-            .values(
+                prescriptionCodeDomainEntity.isActivate,
+            ).values(
                 prescriptionCode,
                 hospitalId,
-                false
-            )
-            .execute() > 0
+                false,
+            ).execute() > 0
 
         return prescriptionCode
     }
 
-    override fun activatePrescription(userId: String, prescriptionCode: String): Boolean {
+    override fun activatePrescriptionCode(
+        userId: String,
+        prescriptionCode: String,
+    ): Boolean {
         TODO("Not yet implemented")
     }
 }

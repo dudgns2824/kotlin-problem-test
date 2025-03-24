@@ -21,5 +21,5 @@ include(
     ":project-beyond-medicine-backend-api:adapter-data-jpa",
     ":project-beyond-medicine-backend-api:application",
     ":project-beyond-medicine-backend-api:bootstrap",
-    ":project-beyond-medicine-backend-api:connector"
+    ":project-beyond-medicine-backend-api:connector",
 )

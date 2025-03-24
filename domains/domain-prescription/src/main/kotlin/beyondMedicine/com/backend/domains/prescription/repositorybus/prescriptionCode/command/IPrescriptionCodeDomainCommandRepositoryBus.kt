@@ -5,5 +5,8 @@ interface IPrescriptionCodeDomainCommandRepositoryBus {
     fun createPrescriptionCode(hospitalId: String): String
 
     // 처방코드 활성화
-    fun activatePrescription(userId: String, prescriptionCode: String): Boolean
+    fun activatePrescriptionCode(
+        userId: String,
+        prescriptionCode: String,
+    ): Boolean
 }

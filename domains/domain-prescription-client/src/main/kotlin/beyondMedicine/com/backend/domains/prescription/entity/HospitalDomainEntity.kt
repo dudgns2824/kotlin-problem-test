@@ -1,3 +1,4 @@
+/*
 package beyondMedicine.com.backend.domains.prescription.entity
 
 import jakarta.persistence.Column
@@ -13,16 +14,22 @@ import jakarta.persistence.Table
 // 나중에 이런것은 공통 entity로 entity 모듈 만들어서 참조해서 쓰는것이 좋을것 같음
 @Table(name = "hospital")
 class HospitalDomainEntity {
-    /**
-     * 병원 id
-     */
+ */
+/**
+ * 병원 id
+ */
+/*
+
     @Id
     @Column(name = "id")
     var id: Long? = null
 
-    /**
-     * 병원 이름
-     */
+ */
+/**
+ * 병원 이름
+ */
+/*
+
     @Column(name = "hospital_name")
     var hospitalName: String? = null
-}
+}*/

@@ -8,11 +8,12 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 class PrescriptionCodeDomainCommandService(
-    private val prescriptionCodeDomainCommandRepositoryBus: IPrescriptionCodeDomainCommandRepositoryBus
+    private val prescriptionCodeDomainCommandRepositoryBus: IPrescriptionCodeDomainCommandRepositoryBus,
 ) : IPrescriptionCodeDomainCommandServiceBus {
-    override fun createPrescriptionCode(hospitalId: String) =
-        prescriptionCodeDomainCommandRepositoryBus.createPrescriptionCode(hospitalId)
+    override fun createPrescriptionCode(hospitalId: String) = prescriptionCodeDomainCommandRepositoryBus.createPrescriptionCode(hospitalId)
 
-    override fun activatePrescription(userId: String, prescriptionCode: String) =
-        prescriptionCodeDomainCommandRepositoryBus.activatePrescription(userId, prescriptionCode)
+    override fun activatePrescriptionCode(
+        userId: String,
+        prescriptionCode: String,
+    ) = prescriptionCodeDomainCommandRepositoryBus.activatePrescriptionCode(userId, prescriptionCode)
 }

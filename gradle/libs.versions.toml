@@ -95,7 +95,9 @@ project-beyond-medicine-backend-adapter-data-jpa = ["spring-boot-starter-data-jp
     "jackson-datatype-jdk8", "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind", ]
 project-beyond-medicine-backend-adapter-data-jpa-kapt = ["spring-boot-configuration-processor"]
 project-beyond-medicine-backend-adapter-data-jpa-test = ["flyway-core", "flyway-mysql"]
-project-beyond-medicine-backend-application = ["spring-boot-starter-web"]
+project-beyond-medicine-backend-application = ["spring-boot-starter-web", "spring-boot-starter-validation", "jakarta-validation-api",
+    "springdoc-openapi-starter-webmvc-ui", "spring-tx", "kotlinx-coroutines-reactor", "jackson-datatype-jdk8",
+    "jackson-datatype-jsr310", "jackson-module-kotlin", "jackson-core", "jackson-databind", "mapstruct"]
 project-beyond-medicine-backend-application-test = []
 project-beyond-medicine-backend-bootstrap = ["spring-boot-starter-web"]
 project-beyond-medicine-backend-connector = ["spring-boot-starter-web", "spring-boot-starter-validation", "jakarta-validation-api",

@@ -1,16 +1,21 @@
 package beyondMedicine.com.backend.service.prescription.command
 
 import beyondMedicine.com.backend.domains.prescription.servicebus.prescriptionCode.command.IPrescriptionCodeDomainCommandServiceBus
-import org.springframework.stereotype.Service
 import beyondMedicine.com.backend.serviceBus.prescription.command.IBackendPrescriptionCommandServiceBus
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
+@Transactional
 class BackendPrescriptionCommandService(
-    private val prescriptionCodeDomainCommandServiceBus: IPrescriptionCodeDomainCommandServiceBus
+    private val prescriptionCodeDomainCommandServiceBus: IPrescriptionCodeDomainCommandServiceBus,
 ) : IBackendPrescriptionCommandServiceBus {
-    override fun createPrescriptionCode(hospitalId: String) =
-        prescriptionCodeDomainCommandServiceBus.createPrescriptionCode(hospitalId)
+    // 처방 코드 생성
+    override fun createPrescriptionCode(hospitalId: String) = prescriptionCodeDomainCommandServiceBus.createPrescriptionCode(hospitalId)
 
-    override fun activatePrescription(userId: String, prescriptionCode: String) =
-        prescriptionCodeDomainCommandServiceBus.activatePrescription(userId, prescriptionCode)
+    // 처방 코드 활성화
+    override fun activatePrescriptionCode(
+        userId: String,
+        prescriptionCode: String,
+    ) = prescriptionCodeDomainCommandServiceBus.activatePrescriptionCode(userId, prescriptionCode)
 }

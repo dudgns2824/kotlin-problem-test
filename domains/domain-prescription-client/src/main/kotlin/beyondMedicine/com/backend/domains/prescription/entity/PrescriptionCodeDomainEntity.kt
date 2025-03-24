@@ -16,9 +16,11 @@ class PrescriptionCodeDomainEntity {
     @Column(name = "id")
     var id: String? = null
 
-/*    *//**
+//
+/**
      * 처방한 병원
-     *//*
+     */
+/*
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hospital_id", nullable = false)
     var hospital: HospitalDomainEntity? = null*/
