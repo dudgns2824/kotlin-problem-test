@@ -12,7 +12,7 @@ fun byndMdcnException(
         if (errorCode.message == null) {
             "[${errorCode.byndMdcnErrorCode}] 에러가 발생하였습니다."
         } else {
-            "[${errorCode.byndMdcnErrorCode}] ${errorCode.message}"
+            "[${errorCode.errModuleName}-${errorCode.byndMdcnErrorCode}] ${errorCode.message}"
         }
 
     throw ByndMdcnException(

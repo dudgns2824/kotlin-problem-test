@@ -27,11 +27,15 @@ class PrescriptionCodeDomainCommandService(
     ): Boolean {
         val userDto = userDomainQueryServiceBus.getUserDetail(userId)
 
-        // if 사용자가 처방코드를 등록한 상태.
-        if (userDto.prescriptionCode != null) {
-            val prescriptionCodeDto =
-                prescriptionCodeDomainQueryRepositoryBus.getDetailPrescriptionCode(userDto.prescriptionCode)
+        val prescriptionCodeDto =
+            prescriptionCodeDomainQueryRepositoryBus.getDetailPrescriptionCode(
+                userDto.prescriptionCode?.takeIf {
+                    it.isNotEmpty()
+                } ?: prescriptionCode,
+            )
 
+        // if 사용자가 처방코드를 등록한 상태.
+        if (userDto.prescriptionCode != "" && userDto.prescriptionCode != null) {
             // 기존 처방코드가 만료되었을 때만 활성화할 수 있어요
             if (prescriptionCodeDto.expiredAt != null &&
                 prescriptionCodeDto.expiredAt!!.isAfter(LocalDateTime.now())
@@ -45,6 +49,6 @@ class PrescriptionCodeDomainCommandService(
         userDomainCommandServiceBus.updateUserPrescriptionCode(userId, prescriptionCode)
 
         // 유저의 처방코드 활성화 만료 일자 6주 되는 날 자정
-        return prescriptionCodeDomainCommandRepositoryBus.activatePrescriptionCode(userId, prescriptionCode)
+        return prescriptionCodeDomainCommandRepositoryBus.activatePrescriptionCode(prescriptionCode)
     }
 }

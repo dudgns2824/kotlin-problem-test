@@ -1,4 +1,4 @@
-package beyondMedicine.com.backend.domains.user.dto.response
+package beyondMedicine.com.backend.domains.user.dto.user.response
 
 import java.time.LocalDateTime
 

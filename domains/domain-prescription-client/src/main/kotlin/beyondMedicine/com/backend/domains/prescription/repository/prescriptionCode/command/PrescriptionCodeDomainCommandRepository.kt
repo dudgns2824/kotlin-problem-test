@@ -41,14 +41,11 @@ class PrescriptionCodeDomainCommandRepository :
         return prescriptionCode
     }
 
-    override fun activatePrescriptionCode(
-        userId: String,
-        prescriptionCode: String,
-    ): Boolean =
+    override fun activatePrescriptionCode(prescriptionCode: String): Boolean =
         queryFactory
             .update(prescriptionCodeDomainEntity)
             .set(prescriptionCodeDomainEntity.isActivate, true)
             .set(prescriptionCodeDomainEntity.expiredAt, LocalDate.now().plusWeeks(6).atStartOfDay())
-            .where()
+            .where(prescriptionCodeDomainEntity.id.eq(prescriptionCode))
             .execute() > 0
 }

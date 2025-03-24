@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.Parameter
 @Operation(
     summary = "사용자 - 사용자 검증 API",
     description =
-    """
+        """
        요청 파라미터 존재
        파라미터는 전부 required 입니다.
        
@@ -41,26 +41,26 @@ import io.swagger.v3.oas.annotations.Parameter
             name = "version",
             description = "버전 정보",
             required = true,
-            example = "0.1.2-alpha.1"
+            example = "0.1.2-alpha.1",
         ),
         Parameter(
             name = "os",
             description = "os 정보",
             required = true,
-            example = "android"
+            example = "android",
         ),
         Parameter(
             name = "mode",
             description = "모드 정보",
             required = true,
-            example = "ReLeAsE"
+            example = "ReLeAsE",
         ),
         Parameter(
             name = "hash",
             description = "해시 정보",
             required = true,
-            example = "ReLeAsE"
-        )
+            example = "Y95ULTuEF0uXNq7fSNa1EEzP0FU=",
+        ),
     ],
 )
 annotation class GetUserVerifyApiDocs
