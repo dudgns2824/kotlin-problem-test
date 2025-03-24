@@ -3,6 +3,7 @@
 
 ## 프로젝트 구조
 ```
+├── buildSrc/                 # gradle 파일 공통 모듈 빌드 설정 모음 
 ├── domains/                 # 도메인 모델      
 │   ├── domain-도메인명/               # 도메인 추상체       
 │   │   ├── servicebus (domain-client 서비스 구현체 접근을 위한 인터페이스)      
@@ -15,13 +16,21 @@
 │   │   │   ├── request (request dto)       
 │   │   │   ├── response (response dto)       
 │   ├── domain-도메인명-client/               # 도메인 구현체     
-│   │   ├── port # port      
-│   │   │   ├── servicebus (domain-client 서비스 구현체 접근을 위한 인터페이스)      
-│   │   │   │   ├── query (조회 관련 in port)       
-│   │   │   │   ├── command (Create,Update,Delete 관련 in port)       
-│   │   │   ├── repositorybus (domain-client db 접근을 위한 repository 구현체 접근을 위한 인터페이스)
-│   │   │   │   ├── query (조회 관련 out port)       
-│   │   │   │   ├── command (Create,Update,Delete 관련 out port)       
+│   │   ├── service (domain-client 서비스 구현체 접근을 위한 인터페이스)      
+│   │   │   ├── query (조회 관련 in port)       
+│   │   │   ├── command (Create,Update,Delete 관련 in port)       
+│   │   ├── repository (domain-client db 접근을 위한 repository 구현체 접근을 위한 인터페이스)
+│   │   │   ├── query (조회 관련 out port)       
+│   │   │   ├── command (Create,Update,Delete 관련 out port)       
+│   │   ├── entity (도메인에 쓰일 entity(orm) 모아놓는 곳)      
+│   │   ├── exception (에러 코드 모으는 곳)       
+│   │   ├── util (유틸성 파일 모아놓는 곳)       
+├── commons/                 # 공통 모듈       
+│   ├── exception       exception 핸들러, exception 모음 + 에러코드 인터페이스       
+│   ├── util ApiResponse 정의 되어있음.        
+├── gradle/                 # 그래들 관리를  위한 libs.version.toml 모음        
+├── modules/                 # 모듈로 관리할 폴더 모음
+│   ├──  adapter-testfixture-db/   # 테스트에 공통으로 사용할 db 모듈            
 ├── project-프로젝트명-api/ # 프로젝트 api      
 │├── build.gradle            # Gradle 설정      
 ```
