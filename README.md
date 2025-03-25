@@ -44,13 +44,13 @@
 http://localhost:8081/swagger-ui/index.html
 ```
 
-## project-beyond-medicine-backend-api의 adapter-data-jpa의 resources에 동봉된 -env.yml 파일 넣어야함.
+## project-beyond-medicine-backend-api의 adapter-data-jpa의 resources에 동봉된 application-adapter-data-jpa-env.yml 파일 넣어야함.
 ```
 제가 운영하고 있는 서버 db에 올려서 민감한 정보라 db접근 값들을 따로 env파일로 뻈습니다.
 ```
 
+## modules의 adapter-testfixture-db src/testFixtures/resources에 동봉된 application-adapter-testfixture-env.yml 파일 넣어야함.
 ```
-## moddules의 adapter-testfixture-db src/testFixtures/resources에 동봉된 -env.yml 파일 넣어야함.
 제가 운영하고 있는 서버 db에 올려서 민감한 정보라 db접근 값들을 따로 env파일로 뻈습니다.
 ```
 
