@@ -32,6 +32,10 @@
 ├── modules/                 # 모듈로 관리할 폴더 모음
 │   ├──  adapter-testfixture-db/   # 테스트에 공통으로 사용할 db 모듈            
 ├── project-프로젝트명-api/ # 프로젝트 api      
+│   ├──  adapter-data-jpa/   # jpa 및 db 접근 설정         
+│   ├──  appliction/   # 요청을 토대로 도메인을 호출하는 비즈니스 로직이 담긴 service 구현체 및 추상체 관련 내용       
+│   ├──  bootstrap   # springboot 실행         
+│   ├──  connector/   # rest api 엔드포인트 및 관련 설정 모음      
 │├── build.gradle            # Gradle 설정      
 ```
 
