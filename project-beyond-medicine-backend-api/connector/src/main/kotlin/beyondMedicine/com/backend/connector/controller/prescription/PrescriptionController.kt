@@ -3,7 +3,6 @@ package beyondMedicine.com.backend.connector.controller.prescription
 import ApiResponse
 import beyondMedicine.com.backend.connector.annotation.docs.prescription.ActivatePrescriptionCodeApiDocs
 import beyondMedicine.com.backend.connector.annotation.docs.prescription.CreatePrescriptionCodeApiDocs
-import beyondMedicine.com.backend.connector.annotation.validation.CheckUserIdExist
 import beyondMedicine.com.backend.serviceBus.prescription.command.IBackendPrescriptionCommandServiceBus
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.validation.annotation.Validated
@@ -27,7 +26,7 @@ class PrescriptionController(
     @ActivatePrescriptionCodeApiDocs
     @PutMapping("/activate")
     fun activatePrescriptionCode(
-        @CheckUserIdExist @RequestParam(value = "userId") userId: String,
+        @RequestParam(value = "userId") userId: String,
         @RequestParam(value = "accessCode") accessCode: String,
     ) = ApiResponse.ok(
         backendPrescriptionCommandServiceBus.activatePrescriptionCode(

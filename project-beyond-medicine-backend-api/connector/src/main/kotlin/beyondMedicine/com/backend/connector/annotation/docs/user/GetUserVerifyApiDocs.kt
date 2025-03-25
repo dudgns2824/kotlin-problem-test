@@ -2,6 +2,10 @@ package beyondMedicine.com.backend.connector.annotation.docs.user
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
+import io.swagger.v3.oas.annotations.media.Content
+import io.swagger.v3.oas.annotations.media.ExampleObject
+import io.swagger.v3.oas.annotations.responses.ApiResponse
+import io.swagger.v3.oas.annotations.responses.ApiResponses
 
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
@@ -34,6 +38,11 @@ import io.swagger.v3.oas.annotations.Parameter
        3. 현재 hash가 엔티티의 유효한 해시가 아니라면 에러 응답
        4. 사용자가 처방코드를 등록하지 않았거나, 만료되었을 때 에러가 응답
        5. 어떤 사용자가 어떤 version, os, mode, hash로 언제 요청했는지 테이블로 이력을 남겨야 해요.
+       
+       return 200 값
+       "정상" -> 어떤 조건도 충족하지 않을 경우
+       "어플의 업데이트가 필수입니다." -> 버전이 최신 버전 이하 최소 버전 이하
+       "어플의 업데이트를 권장합니다." -> 버전이 최신 버전 이하 최소 버전 이상
     """,
     parameters = [
         Parameter(name = "userId", description = "사용자 ID UUID", required = true, example = "e4e3ecbd-2208-4905-8120-426473d0eae9"),
@@ -60,6 +69,56 @@ import io.swagger.v3.oas.annotations.Parameter
             description = "해시 정보",
             required = true,
             example = "Y95ULTuEF0uXNq7fSNa1EEzP0FU=",
+        ),
+    ],
+)
+@ApiResponses(
+    value = [
+        ApiResponse(
+            responseCode = "200",
+            description = "사용자 - 사용자 검증 api 처방 코드 생성 성공",
+            content = [
+                Content(
+                    mediaType = "application/json",
+                    examples = [
+                        ExampleObject(
+                            value = """
+{
+  "code": 200,
+  "message": "성공하였습니다.",
+  "timestamp": "2025-03-25T16:03:53.234679900",
+  "data": "어플의 업데이트가 필수입니다."
+}
+                            """,
+                        ),
+                    ],
+                ),
+            ],
+        ),
+        ApiResponse(
+            responseCode = "500",
+            description =
+                "처방 - 처방 코드 생성 api 생성 중 exception 이것은 예시이며, " +
+                    "\n도메인에서 나는 에러들은 에러별로 서로 exception 코드가 상이 합니다. response code 500 공통",
+            content = [
+                Content(
+                    mediaType = "application/json",
+                    examples = [
+                        ExampleObject(
+                            value = """
+                {
+                  "byndMdcnErrorCode": "DMN-USER-8002",
+                  "code": 500,
+                  "message": "[DMN-USER-8002] 유효한 해시가 아닙니다.",
+                  "timestamp": "2025-03-25T16:05:22.521055500",
+                  "path": "/api/beyondMedicine/user/verify",
+                  "method": "POST"
+                }
+                            """,
+                        ),
+                    ],
+                ),
+            ],
         ),
     ],
 )
