@@ -19,6 +19,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 @AnnotDomainPrescriptionClientTest
 @TestExecutionListeners(TransactionalTestExecutionListener::class)
 @Transactional // 테스트 코드에서만 부모 트랜잭션 전파가 안되는 에러.... TransactionRequiredException
+// behaviorSpec << 여기서 부모 트랜잭션 전파가 안됐네요 이유는 잘 모르겠습니다
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class PrescriptionCodeDomainCommandServiceTest(
     private val prescriptionCodeDomainCommandServiceBus: IPrescriptionCodeDomainCommandServiceBus,
