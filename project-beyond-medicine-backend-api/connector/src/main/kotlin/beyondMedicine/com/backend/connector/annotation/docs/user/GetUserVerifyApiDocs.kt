@@ -98,7 +98,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses
         ApiResponse(
             responseCode = "500",
             description =
-                "처방 - 처방 코드 생성 api 생성 중 exception 이것은 예시이며, " +
+                "사용자 - 사용자 검증 api exception 이것은 예시이며, " +
                     "\n도메인에서 나는 에러들은 에러별로 서로 exception 코드가 상이 합니다. response code 500 공통",
             content = [
                 Content(
