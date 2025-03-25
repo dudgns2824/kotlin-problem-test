@@ -16,10 +16,10 @@
 │   │   │   ├── request (request dto)       
 │   │   │   ├── response (response dto)       
 │   ├── domain-도메인명-client/               # 도메인 구현체     
-│   │   ├── service (domain-client 서비스 구현체 접근을 위한 인터페이스)      
+│   │   ├── service (domain-client 서비스 구현체)      
 │   │   │   ├── query (조회 관련 in port)       
 │   │   │   ├── command (Create,Update,Delete 관련 in port)       
-│   │   ├── repository (domain-client db 접근을 위한 repository 구현체 접근을 위한 인터페이스)
+│   │   ├── repository (domain-client db 접근을 위한 repository 구현체)
 │   │   │   ├── query (조회 관련 out port)       
 │   │   │   ├── command (Create,Update,Delete 관련 out port)       
 │   │   ├── entity (도메인에 쓰일 entity(orm) 모아놓는 곳)      
