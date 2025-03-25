@@ -1,16 +1,26 @@
 package beyondMedicine.com.backend.connector.controller.user
 
 import beyondMedicine.com.backend.connector.BackendConnectorTest
+import beyondMedicine.com.backend.domains.user.servicebus.user.query.IUserDomainQueryServiceBus
+import beyondMedicine.com.backend.serviceBus.user.command.IBackendUserCommandServiceBus
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.extension.ExtendWith
+import org.springframework.test.context.TestExecutionListeners
+import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
+import org.springframework.transaction.annotation.Transactional
 
 @BackendConnectorTest
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Transactional
+@ExtendWith(SpringExtension::class)
+@TestExecutionListeners(TransactionalTestExecutionListener::class)
 class UserControllerTest(
     private val mockMvc: MockMvc,
+    private val backendUserCommandServiceBus: IBackendUserCommandServiceBus,
+    private val userDomainQueryServiceBus: IUserDomainQueryServiceBus,
 ) : BehaviorSpec({
 
         given("사용자 검증 API 호출") {

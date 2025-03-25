@@ -27,7 +27,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses
             name = "userId",
             description = "UUID로 생성된 사용자 아이디",
             required = true,
-            example = "e4e3ecbd-2208-4905-8120-426473d0eae9",
+            example = "g4e2ecga-1305-6225-5121-a2h471d0na2a",
         ),
         Parameter(
             name = "accessCode",

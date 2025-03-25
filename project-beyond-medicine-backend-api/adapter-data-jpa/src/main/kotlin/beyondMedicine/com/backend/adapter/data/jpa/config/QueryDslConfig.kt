@@ -7,12 +7,14 @@ import jakarta.persistence.PersistenceContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
+import org.springframework.transaction.annotation.EnableTransactionManagement
 
 @Configuration
 @EnableJpaAuditing
+@EnableTransactionManagement
 class QueryDslConfig(
     @PersistenceContext
-    private val entityManager: EntityManager
+    private val entityManager: EntityManager,
 ) {
     @Bean
     fun jPAQueryFactory() = JPAQueryFactory(JPQLTemplates.DEFAULT, entityManager)

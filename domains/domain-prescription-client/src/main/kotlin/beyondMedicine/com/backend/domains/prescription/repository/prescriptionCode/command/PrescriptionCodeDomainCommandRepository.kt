@@ -36,7 +36,7 @@ class PrescriptionCodeDomainCommandRepository :
                 prescriptionCode,
                 hospitalId,
                 false,
-            ).execute() > 0
+            ).execute()
 
         return prescriptionCode
     }
@@ -46,6 +46,12 @@ class PrescriptionCodeDomainCommandRepository :
             .update(prescriptionCodeDomainEntity)
             .set(prescriptionCodeDomainEntity.isActivate, true)
             .set(prescriptionCodeDomainEntity.expiredAt, LocalDate.now().plusWeeks(6).atStartOfDay())
+            .where(prescriptionCodeDomainEntity.id.eq(prescriptionCode))
+            .execute() > 0
+
+    override fun deletePrescriptionCode(prescriptionCode: String) =
+        queryFactory
+            .delete(prescriptionCodeDomainEntity)
             .where(prescriptionCodeDomainEntity.id.eq(prescriptionCode))
             .execute() > 0
 }

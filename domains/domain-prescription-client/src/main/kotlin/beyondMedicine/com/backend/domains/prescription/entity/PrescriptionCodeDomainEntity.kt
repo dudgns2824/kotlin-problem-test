@@ -5,7 +5,6 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 import org.hibernate.annotations.CreationTimestamp
-import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
 @Suppress("ktlint:standard:no-consecutive-comments")
@@ -51,14 +50,12 @@ class PrescriptionCodeDomainEntity {
     /**
      * 만료 일시
      */
-    @CreationTimestamp
     @Column(name = "expired_at")
     var expiredAt: LocalDateTime? = null
 
     /**
      * 수정 일시
      */
-    @UpdateTimestamp
     @Column(name = "updated_at")
     var updatedAt: LocalDateTime? = null
 

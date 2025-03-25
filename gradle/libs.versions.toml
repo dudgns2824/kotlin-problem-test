@@ -88,7 +88,8 @@ domains-common = [
     "spring-boot-starter-web",
 ]
 domains-common-test = [
-    "mockito-kotlin"
+    "mockito-kotlin",
+    "spring-boot-starter-aop"
 ]
 domains-common-kapt = [
     # jpa

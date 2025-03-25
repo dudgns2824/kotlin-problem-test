@@ -1,4 +1,4 @@
-package beyondMedicine.com.backend.domains.prescription.service.prescriptionCode.query
+package beyondMedicine.com.backend.domains.prescription.query
 
 import beyondMedicine.com.backend.commons.core.exception.ByndMdcnException
 import beyondMedicine.com.backend.domains.prescription.AnnotDomainPrescriptionClientTest

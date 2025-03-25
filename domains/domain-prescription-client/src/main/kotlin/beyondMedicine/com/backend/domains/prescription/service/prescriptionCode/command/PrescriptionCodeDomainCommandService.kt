@@ -8,11 +8,9 @@ import beyondMedicine.com.backend.domains.prescription.servicebus.prescriptionCo
 import beyondMedicine.com.backend.domains.user.servicebus.user.command.IUserDomainCommandServiceBus
 import beyondMedicine.com.backend.domains.user.servicebus.user.query.IUserDomainQueryServiceBus
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 
 @Service
-@Transactional
 class PrescriptionCodeDomainCommandService(
     private val prescriptionCodeDomainCommandRepositoryBus: IPrescriptionCodeDomainCommandRepositoryBus,
     private val prescriptionCodeDomainQueryRepositoryBus: IPrescriptionCodeDomainQueryRepositoryBus,
