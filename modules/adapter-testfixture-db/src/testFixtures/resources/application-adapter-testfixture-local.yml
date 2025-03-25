@@ -16,6 +16,8 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
+        connection:
+          isolation: 2
         format_sql: true
         highlight_sql: true
         use_sql_comments: true
