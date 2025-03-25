@@ -19,7 +19,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 // prescriptionCodeDomainCommandServiceBus 테스트 코드
 @AnnotDomainPrescriptionClientTest
 @TestExecutionListeners(TransactionalTestExecutionListener::class)
-@Transactional
+@Transactional // 테스트 코드에서만 부모 트랜잭션 전파가 안되는 에러....
 @ExtendWith(SpringExtension::class)
 @Import(TestAopConfig::class)
 class PrescriptionCodeDomainCommandServiceTest(
